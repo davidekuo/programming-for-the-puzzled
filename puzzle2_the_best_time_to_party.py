@@ -30,11 +30,16 @@ def best_time_to_party_fractional(schedule):
     factor = 10 * num_decimal_places
     hrs_celeb_present = []
     for interval in schedule:
-        hrs_celeb_present += [x/factor for x in range(int(interval[0]*factor), int(interval[1]*factor))]#
+        hrs_celeb_present += [x/factor for x in range(int(interval[0]*factor), int(interval[1]*factor))]
     print(Counter(hrs_celeb_present).most_common())
     return Counter(hrs_celeb_present).most_common(1)[0][0]
     # Counter(data).most_common(n) returns the n most common items in data
     # as a list of n (item, count) tuples -> [0][0] to get item
+
+
+# Key in-class insight: # of celebrities present only changes if celebrities joining != celebrities leaving at a given hour
+# Can create 2 lists (hr_joining, hr_leaving), sort them, and then keep a running count of # celebrities present
+# while iterating through the 2 lists
 
 
 def main():
